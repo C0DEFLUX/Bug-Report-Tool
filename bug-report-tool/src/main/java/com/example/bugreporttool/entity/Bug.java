@@ -3,6 +3,8 @@ package com.example.bugreporttool.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 import java.time.LocalDate;
 
 @Entity
@@ -11,24 +13,27 @@ public class Bug {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Title is required.")
+    @NotBlank(message = "Title must not be empty")
     private String title;
 
-    @NotBlank(message = "Description is required.")
+    @NotBlank(message = "Description must not be empty")
+    @Size(max = 2000, message = "Description must be less than 2000 characters")
     @Column(length = 2000)
     private String description;
 
+    @NotBlank(message = "Priority must not be empty")
     private String priority;
 
+    @NotBlank(message = "Status must not be empty")
     private String status;
 
-    @Email(message = "Please enter a valid email.")
+    @NotBlank(message = "Reporter email must not be empty")
+    @Email(message = "Email should be valid")
     private String reporterEmail;
 
     private LocalDate dateCreated;
 
     // Getters and Setters
-
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
