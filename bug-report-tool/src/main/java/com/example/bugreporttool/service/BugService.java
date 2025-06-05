@@ -2,6 +2,7 @@ package com.example.bugreporttool.service;
 
 import com.example.bugreporttool.entity.Bug;
 import com.example.bugreporttool.repository.BugRepository;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -18,7 +19,7 @@ public class BugService {
 
     public List<Bug> getAllBugs()
     {
-        return bugRepository.findAll();
+        return bugRepository.findAll(Sort.by(Sort.Direction.DESC, "dateCreated"));
     }
 
     public Bug getBugById(Long id)
