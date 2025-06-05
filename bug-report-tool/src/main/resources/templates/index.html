@@ -1,0 +1,17 @@
+<!-- src/main/resources/templates/index.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>BugReportTool - Home</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<h1>Welcome to BugReportTool</h1>
+<p>This tool helps you track, create, and manage software bugs.</p>
+
+<nav>
+    <a th:href="@{/bugs}">View All Bugs</a> |
+    <a th:href="@{/bugs/new}">Report a New Bug</a>
+</nav>
+</body>
+</html>
