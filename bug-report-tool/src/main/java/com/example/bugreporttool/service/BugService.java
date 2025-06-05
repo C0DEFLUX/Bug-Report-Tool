@@ -41,11 +41,21 @@ public class BugService {
 
     public Bug updateBug(Long id, Bug updatedBug) {
         return bugRepository.findById(id).map(existingBug -> {
-            existingBug.setTitle(updatedBug.getTitle());
-            existingBug.setDescription(updatedBug.getDescription());
-            existingBug.setPriority(updatedBug.getPriority());
-            existingBug.setStatus(updatedBug.getStatus());
-            existingBug.setReporterEmail(updatedBug.getReporterEmail());
+            if (updatedBug.getTitle() != null) {
+                existingBug.setTitle(updatedBug.getTitle());
+            }
+            if (updatedBug.getDescription() != null) {
+                existingBug.setDescription(updatedBug.getDescription());
+            }
+            if (updatedBug.getPriority() != null) {
+                existingBug.setPriority(updatedBug.getPriority());
+            }
+            if (updatedBug.getStatus() != null) {
+                existingBug.setStatus(updatedBug.getStatus());
+            }
+            if (updatedBug.getReporterEmail() != null) {
+                existingBug.setReporterEmail(updatedBug.getReporterEmail());
+            }
             return bugRepository.save(existingBug);
         }).orElse(null);
     }
